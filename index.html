@@ -1,0 +1,15 @@
+<div>
+    <label>Age: </label>
+    <input type="text" name="age" />
+</div>
+
+<script>
+    let inputs = document.getElementsByTagName('input');
+    for (const input of inputs) {
+        input.addEventListener('blur', emitUpdate);
+    }
+    function emitUpdate(event) {
+        const evt = new CustomEvent('subFormUpdate', {value: event.target.value, valid: event.target.validity});
+        window.dispatchEvent(evt);
+    }
+</script>
